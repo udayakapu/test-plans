@@ -1,7 +1,7 @@
 Corporate Payroll System
 TEST PLAN
 SECTION	PAGE
-1.	Test plan identifier	21
+1.	Test plan id	21
 2.	Introduction	21
 2.1 Objectives	21
 2.2 Background	21
