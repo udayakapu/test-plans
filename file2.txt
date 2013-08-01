@@ -1,0 +1,212 @@
+Corporate Payroll System
+TEST PLAN
+SECTION	PAGE
+1.	Test plan identifier	21
+2.	Introduction	21
+2.1 Objectives	21
+2.2 Background	21
+2.3 Scope	21
+2.4 References	21
+3.	Test items	21
+3.1 Program modules	22
+3.2 Job control procedures	22
+3.3 User procedures	22
+3.4 Operator procedures	22
+4.	Features to be tested	22
+5.	Features not to be tested	22
+6.	Approach	23
+6.1 Conversion testing	23
+6.2 Job stream testing	23
+6.3 Interface testing	23
+6.4 Security testing	23
+6.5 Recovery testing	23
+6.6 Performance testing	23
+6.7 Regression	23
+6.8 Comprehensiveness	24
+6.9 Constraints	24
+7.	Item pass/fail criteria	24
+8.	Suspension criteria and resumption requirements	24
+8.1 Suspension criteria	24
+8.2 Resumption requirements	24
+9.	Test deliverables	24
+10.	Testing tasks	25
+11.	Environmental needs	25
+11.1 Hardware	25
+ 
+IEEE
+Std 829-1998	IEEE STANDARD FOR
+11.2 Software	25
+11.3 Security	25
+11.4 Tools	25
+11.5 Publications	25
+12.	Responsibilities	25
+12.1 System test group	25
+12.2 Corporate payroll department	25
+12.3 Development project group	26
+13.	Staffing and training needs	26
+13.1 Staffing	26
+13.2 Training	26
+14.	Schedule	26
+15.	Risks and contingencies	26
+16.	Approvals	26
+Attachments
+A.	Task list	27
+ 
+IEEE
+SOFTWARE TEST DOCUMENTATION	Std 829-1998
+1. Test plan identiÞer
+AP05-0103
+2. Introduction
+2.1 Objectives. A system test plan for the corporate payroll system should support the following objectives:
+(1)	To detail the activities required to prepare for and conduct the system test.
+(2)	To communicate to all responsible parties the tasks that they are to perform and the schedule to be followed in performing the tasks.
+(3)	To define the sources of the information used to prepare the plan.
+(4)	To define the test tools and environment needed to conduct the system test.
+2.2 Background. Last year the XYZ Corporate Systems and Programming Department developed a new General Ledger System at the request of the Corporate Accounting Department. A request was made at the same time for a new corporate payroll system to be developed that would interface with the general ledger system.
+The Management Systems Review Committee approved the request for the payroll system in September of 19xx and named a corporate payroll system advisory group to decide on the system requirements. The group finished a Statement of Requirements (AP01-01) and a Preliminary Development Plan (AP01-02) in December 19xx.
+2.3 Scope. This test plan covers a full systems test of the corporate payroll system. This includes operator and user procedures, as well as programs and job control. In addition to comprehensively testing multipro¬gram functionality, external interfaces, security, recovery, and performance will also be evaluated.
+2.4 References. The following documents were used as sources of information for the test plan:
+Corporate Payroll System Preliminary Development Plan (AP01-02)
+Corporate Payroll System Authorization (AP01-03)
+Corporate Payroll System Final Development Plan (AP01-06)
+Corporate Payroll System Quality Assurance Plan (AP01-08)
+Corporate Payroll System Configuration Management Plan (AP01-09)
+XYZ Corporate Systems Development Standards and Procedures (XYZ01-0100)
+Corporate General Ledger System Design Description (AG01-04)
+Corporate General Ledger System Test Plan (AG05-01)
+3. Test items
+All items that make up the corporate payroll system will be tested during the system test. The versions to be tested will be placed in the appropriate libraries by the configuration administrator. The administrator will also control changes to the versions under test and notify the test group when new versions are available.
+The following documents will provide the basis for defining correct operation:
+Corporate Payroll System Statement of Requirements (AP01-01) Corporate Payroll System Design Description (AP01-04) Corporate Payroll System Reference Manual (AP02-01) Corporate Payroll System Module Reference Manual (AP02-03)
+ 
+IEEE
+Std 829-1998	IEEE STANDARD FOR
+The items to be tested are as follows:
+3.1 Program modules. The program modules to be tested will be identified as follows:
+Type	Library	Member name
+Source Code	SOURLIB1	AP0302
+AP0305
+Executable Code	MACLIB1	AP0301
+AP0302
+AP0305
+3.2 Job control procedures. The control procedures for application programs, sorts, and utility programs will be identified as follows:
+Type	Library	Member name
+Application Programs PROCLIB1	AP0401
+Sorts	PROCLIB1	AP0402
+Utility Programs	PROCLIB1	AP0403
+3.3 User procedures. The on-line procedures specified in the Corporate Payroll System User Transaction Reference Manual (AP02-04) will be tested.
+3.4 Operator procedures. The system test includes the procedures specified in the Corporate Payroll System Operation Reference Manual (AP02-02).
+4. Features to be tested
+The following list describes the features that will be tested:
+Test design
+specification number	Description
+AP06-01	Database conversion
+AP06-02	Complete payroll processing for salaried employees only
+AP06-03	Complete payroll processing for hourly employees only
+AP06-04	Complete payroll processing for all employees
+AP06-05	Periodic reporting
+AP06-06	General Ledger transaction building
+AP06-07	Security
+AP06-08	Recovery
+AP06-09	Performance
+5. Features not to be tested
+The following features will not be included in the system tests because they are not to be used when the system is initially installed:
+Equal Employment Opportunity Commission Compliance Reports Internal Training Schedule Reports Salary/Performance Review Reports
+ 
+IEEE
+SOFTWARE TEST DOCUMENTATION	Std 829-1998
+The development Phase 2.0 documentation will contain a test plan for these features.
+The test cases will not cover all possible combinations of options within the transaction or report being tested. Only combinations that are known to be required for current XYZ Corporate Payroll processing will be tested.
+6. Approach
+The test personnel will use the system documentation to prepare all test design, case, and procedure specifi¬cations. This approach will verify the accuracy and comprehensiveness of the information in the documenta¬tion in those areas covered by the tests.
+Personnel from the Payroll and Corporate Accounting Departments will assist in developing the test designs and test cases. This will help ensure that the tests represent the production use of the system.
+In order to ensure privacy, all test data extracted from production files will have privacy-sensitive fields changed.
+6.1 Conversion testing. In addition to counting the input and output records, the validity of the converted database will be verified in two ways. The first verification method involves the use of a database auditor that must be built by the development group. When run against the converted database, the database auditor will check value ranges within a record and the required relationships between records.
+The second verification method involves the random selection of a small subset of old records and then a direct comparison against a corresponding subset of the new records. The number of direct comparisons, c, and the number of old records, r, must be specified. A set of c random numbers will be generated from the range 1 to r. This set will be sorted and used during the conversion process to drive the selection of records for direct comparison.
+NOTE—This same two-pronged verification approach should be used during the actual conversion.
+6.2 Job stream testing. A comprehensive set of records of salaried employees, hourly employees, and a merged set of these two should be used to test payroll processing. The standard job stream testing approach should be used.
+Run each of the periodic reporting job streams at least once.
+6.3 Interface testing. In order to test the interface between the payroll and general ledger systems, the payroll system will build a comprehensive set of general ledger transactions. These transactions will then be input to the general ledger test system. The resulting general ledger entries must be extracted, printed, and compared with a printout of the general ledger transactions prepared by the payroll system.
+6.4 Security testing. Attempted access without a proper password to the on-line data entry and display transactions will be tested.
+6.5 Recovery testing. Recovery will be tested by halting the machine during stand-alone time and then following the recovery procedures.
+6.6 Performance testing. Performance will be evaluated against the performance requirements (AP01-01) by measuring the run times of several jobs using production data volumes.
+6.7 Regression. It is assumed that several iterations of the system test will be done in order to test program modifications made during the system test period. A regression test will be performed for each new version of the system to detect unexpected impact resulting from program modifications.
+ 
+IEEE
+Std 829-1998	IEEE STANDARD FOR
+The regression test will be done by running all of the tests on a new version that were run on the previous version and then comparing the resulting files. The standard comparator program, UT08-0100, will be used to compare all system outputs.
+6.8 Comprehensiveness. Each of the system features described in the Corporate Payroll System Reference Manual (AP02-01) will have at least one associated test design specification. Each of the user procedures specified in the Corporate Payroll System User Transaction Reference Manual (AP02-04) will be tested at least once. Each of the operating procedures specified in the Corporate Payroll System Operation Reference Manual (AP02-02) also will be tested at least once. In addition, each job control procedure will be executed at least once.
+A coverage matrix will be used to related test design specifications to each of the areas described above.
+6.9 Constraints. A final implementation date of August 31, 19xx has been planned for the Corporate Payroll System. It will be necessary to meet this date because the new ABC Division begins full operation on September 1, and they must have this payroll system to pay their employees.
+7. Item pass/fail criteria
+The system must satisfy the standard requirements for system pass/fail stated in the XYZ Corporate Systems Development Standards and Procedures (XYZ01-0100).
+The system must also satisfy the following requirements:
+- Memory requirements must not be greater than 64K of real storage.
+- Consistency of user procedures with other accounting systems must satisfy the Payroll Supervisor.
+8. Suspension criteria and resumption requirements
+8.1 Suspension criteria. Inability to convert the Employee Information Database will cause suspension of all testing activities.
+8.2 Resumption requirements. When a new version of the system is transmitted to the test group after a suspension of testing has occurred, a regression test as described in 6.7 will be run.
+9. Test deliverables
+The following documents will be generated by the system test group and will be delivered to the configura¬tion management group after test completion.
+Test documentation:
+System Test Plan
+System Test Design Specifications System Test Case Specifications System Test Procedure Specifications System Test Logs
+System Test Incident Report Log System Test Incident Reports System Test Summary Report
+Test data:
+(1)	Copies of all data entry and inquiry screens and the reply screens are to be attached to the related test case document.
+(2)	Copies of the input and output test files should be delivered to the configuration management group.
+(3)	Microfiche copies of the printed output from the final execution of each test procedure are to be delivered to the configuration management group along with the test documentation.
+ 
+IEEE
+SOFTWARE TEST DOCUMENTATION	Std 829-1998
+10. Testing tasks
+See Task list, Attachment A.
+11. Environmental needs
+11.1 Hardware. The testing will be done on the XYZ hardware configuration.
+Since most testing must be done during prime operating hours, three on-line terminals must be available to the test group during this period.
+11.2 Software
+11.2.1 Operating system. The production operating system will be used to execute these tests.
+11.2.2 Communications software. All on-line programs will be tested under the control of the test communication software.
+11.3 Security. Security will be limited to existing controls.
+11.4 Tools. The following test tools are required to develop and evaluate the system tests:
+(1)	Test Data Generator (UT09-0200). This program will be used to generate the majority of the test data. It is located in the standard system library, SYSLIBA.
+(2)	Comparator Program (UT08-0100). This program will be used to compare system results during the regression tests. It is located in the standard system library, SYSLIBA.
+(3)	Database Auditor. This program audits value ranges and interrecord relationships in the database. It must be supplied by the development group.
+11.5 Publications. The following documents are required to support systems testing:
+- Corporate Payroll System Statement of Requirements (AP01-01)
+- Corporate Payroll System Design Description (AP01-04)
+- Corporate Payroll System Reference Manual (AP02-01)
+- Corporate Payroll Operation Reference Manual (AP02-02)
+- Corporate Payroll System Module Reference Manual (AP02-03)
+- Corporate Payroll System User Transaction Reference Manual (AP02-04)
+12. Responsibilities
+The following groups have responsibility for segments of the testing.
+12.1 System test group. This group provides the overall management of the testing and the technical testing expertise.
+12.2 Corporate payroll department. This group is the end user of the Corporate Payroll System and will provide assistance to the test group in the following activities:
+- Reviewing the test design specifications. - Executing the on-line tests.
+- Checking output screens and reports.
+ 
+IEEE
+Std 829-1998	IEEE STANDARD FOR
+12.3 Development project group. This group transmits the system to be tested and responds to the System Test Incident Reports. This group does any program debugging that is required. It also supplies the database auditor.
+13. Staffing and training needs
+13.1 Staffing. The following staff is needed to carry out this testing project. 13.1.1 Test group.
+Test Manager	1
+Senior Test Analyst 1
+Test Analysts	2
+Test Technician	1
+13.1.2 Payroll department.
+Payroll Supervisor	1
+13.2 Training. The Corporate Payroll Department personnel must be trained to do the data entry transactions. The User Transaction Reference Manual (AP02-04) will be the basis of this training.
+14. Schedule
+See Task list, Attachment A.
+Hardware, software, and test tools will be used for testing during the period from June 1, 19xx through August 1, 19xx.
+15. Risks and contingencies
+If the testing schedule is significantly impacted by system failure, the development manager has agreed to assign a full-time person to the test group to do debugging.
+If one payroll supervisor is not sufficiently available for testing, then the payroll manager has agreed to identify a second supervisor.
+If hardware problems impact system availability during the day, then the test group will schedule their activities during the evening.
+The first production runs of the Corporate Payroll System must be checked out in detail before the payroll checks are distributed, and any checks in error must be corrected manually.
+	16. Approvals 	
+Test	Manager	Dat
+Development	Project Manager
+Quality Assurance Manager	Date
